@@ -1,5 +1,10 @@
+import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
 import 'package:chat/constants.dart';
+import 'package:chat/providers/user_provider.dart';
+import 'package:chat/screens/welcome/welcome_screen.dart';
+import 'package:chat/shared/extentions.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../models/ChatMessage.dart';
 import 'components/chat_input_field.dart';
@@ -16,8 +21,26 @@ class MessagesScreen extends StatelessWidget {
         title: const Text("Flutter Dev Chat"),
         actions: [
           IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.logout_outlined),
+            onPressed: () async {
+              final response = await context.read<UserProvider>().signOut();
+              response.fold(
+                (error) => context.showError(error),
+                (result) {
+                  if (result is CognitoCompleteSignOut) {
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const WelcomeScreen(),
+                      ),
+                      (route) => false,
+                    );
+                  }
+                },
+              );
+            },
+            icon: context.watch<UserProvider>().isLoading
+                ? const CircularProgressIndicator(color: Colors.white)
+                : const Icon(Icons.logout_outlined),
           ),
         ],
       ),

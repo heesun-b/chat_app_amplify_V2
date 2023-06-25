@@ -43,6 +43,8 @@ class UserProvider with ChangeNotifier {
       username: username,
       password: password,
     );
+    final user = await _userRepository.getCurrentUser();
+    _currentUser = user;
     _setIsLoading(false);
     return response;
   }
@@ -57,4 +59,16 @@ class UserProvider with ChangeNotifier {
     return null;
   }
 
+  Future<Either<String, SignOutResult>> signOut() async {
+    _setIsLoading(true);
+    try {
+      final response = await _userRepository.signOut();
+      _currentUser = null;
+      _setIsLoading(false);
+      return right(response);
+    } on AuthException catch (e) {
+      _setIsLoading(false);
+      return left(e.message);
+    }
+  }
 }

@@ -53,4 +53,8 @@ class UserRepository {
   Future<AuthUser> getCurrentUser() {
     return Amplify.Auth.getCurrentUser();
   }
+
+  Future<SignOutResult> signOut() {
+    return Amplify.Auth.signOut();
+  }
 }

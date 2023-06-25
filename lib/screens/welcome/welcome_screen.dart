@@ -81,8 +81,8 @@ class WelcomeScreen extends StatelessWidget {
 
 class SkipButton extends StatelessWidget {
   const SkipButton({
-    super.key,
-  });
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
