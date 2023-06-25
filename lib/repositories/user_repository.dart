@@ -2,7 +2,6 @@ import 'package:amplify_flutter/amplify_flutter.dart';
 import 'package:dartz/dartz.dart';
 
 class UserRepository {
-
   Future<Either<String, SignUpResult>> signUp(
       String username, String email, String password) async {
     final Map<AuthUserAttributeKey, String> userAttributes = {
@@ -32,5 +31,26 @@ class UserRepository {
     } on AuthException catch (e) {
       return left(e.message);
     }
+  }
+
+  Future<Either<String, SignInResult>> signIn(
+      {required String username, required String password}) async {
+    try {
+      final result = await Amplify.Auth.signIn(
+        username: username,
+        password: password,
+      );
+      return right(result);
+    } on AuthException catch (e) {
+      return left(e.message);
+    }
+  }
+
+  Future<AuthSession> isUserLogedIn() {
+    return Amplify.Auth.fetchAuthSession();
+  }
+
+  Future<AuthUser> getCurrentUser() {
+    return Amplify.Auth.getCurrentUser();
   }
 }

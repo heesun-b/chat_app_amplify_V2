@@ -35,4 +35,26 @@ class UserProvider with ChangeNotifier {
     _setIsLoading(false);
     return response;
   }
+
+  Future<Either<String, SignInResult>> signIn(
+      {required String username, required String password}) async {
+    _setIsLoading(true);
+    final response = await _userRepository.signIn(
+      username: username,
+      password: password,
+    );
+    _setIsLoading(false);
+    return response;
+  }
+
+  Future<AuthUser?> checkedLogedInUser() async {
+    final authSession = await _userRepository.isUserLogedIn();
+
+    if (authSession.isSignedIn) {
+      _currentUser = await _userRepository.getCurrentUser();
+      return _currentUser;
+    }
+    return null;
+  }
+
 }
