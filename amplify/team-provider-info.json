@@ -1,0 +1,23 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-flutterchat-dev-143703-authRole",
+      "UnauthRoleArn": "arn:aws:iam::830308227356:role/amplify-flutterchat-dev-143703-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::830308227356:role/amplify-flutterchat-dev-143703-authRole",
+      "Region": "ap-northeast-2",
+      "DeploymentBucketName": "amplify-flutterchat-dev-143703-deployment",
+      "UnauthRoleName": "amplify-flutterchat-dev-143703-unauthRole",
+      "StackName": "amplify-flutterchat-dev-143703",
+      "StackId": "arn:aws:cloudformation:ap-northeast-2:830308227356:stack/amplify-flutterchat-dev-143703/f2d6d620-1319-11ee-a221-02919bf61ce6",
+      "AmplifyAppId": "d1ushy77yt7t3p"
+    },
+    "categories": {
+      "auth": {
+        "flutterchat9567efaa": {}
+      },
+      "api": {
+        "flutterchat": {}
+      }
+    }
+  }
+}
