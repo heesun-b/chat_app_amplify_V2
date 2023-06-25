@@ -1,5 +1,11 @@
 {
   "AppSyncApiName": "flutterchat",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
-  "DynamoDBEnableServerSideEncryption": false
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authflutterchatf66a27ff",
+      "Outputs.UserPoolId"
+    ]
+  }
 }

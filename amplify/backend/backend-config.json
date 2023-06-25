@@ -1,10 +1,25 @@
 {
   "api": {
     "flutterchat": {
-      "dependsOn": [],
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "flutterchatf66a27ff"
+        }
+      ],
       "output": {
         "authConfig": {
-          "additionalAuthenticationProviders": [],
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+              "userPoolConfig": {
+                "userPoolId": "authflutterchatf66a27ff"
+              }
+            }
+          ],
           "defaultAuthentication": {
             "apiKeyConfig": {
               "apiKeyExpirationDays": 7
@@ -18,7 +33,7 @@
     }
   },
   "auth": {
-    "flutterchat9567efaa": {
+    "flutterchatf66a27ff": {
       "customAuth": false,
       "dependsOn": [],
       "frontendAuthConfig": {

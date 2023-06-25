@@ -1,10 +1,10 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "identityPoolName": "flutterchat9567efaa_identitypool_9567efaa",
+    "identityPoolName": "flutterchatf66a27ff_identitypool_f66a27ff",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "flutte9567efaa",
-    "userPoolName": "flutterchat9567efaa_userpool_9567efaa",
+    "resourceNameTruncated": "fluttef66a27ff",
+    "userPoolName": "flutterchatf66a27ff_userpool_f66a27ff",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -31,10 +31,10 @@
     "userpoolClientReadAttributes": [
       "email"
     ],
-    "userpoolClientLambdaRole": "flutte9567efaa_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "fluttef66a27ff_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "9567efaa",
-    "resourceName": "flutterchat9567efaa",
+    "sharedId": "f66a27ff",
+    "resourceName": "flutterchatf66a27ff",
     "authSelections": "identityPoolAndUserPool",
     "useDefault": "default",
     "userPoolGroupList": [],

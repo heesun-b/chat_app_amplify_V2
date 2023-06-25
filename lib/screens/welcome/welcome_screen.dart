@@ -57,7 +57,7 @@ class WelcomeScreen extends StatelessWidget {
                             Navigator.pushAndRemoveUntil(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const MessagesScreen(),
+                                builder: (context) => MessagesScreen(),
                               ),
                               (route) => false,
                             );

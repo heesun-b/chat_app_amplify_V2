@@ -1,19 +1,19 @@
 {
   "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-flutterchat-dev-143703-authRole",
-      "UnauthRoleArn": "arn:aws:iam::830308227356:role/amplify-flutterchat-dev-143703-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::830308227356:role/amplify-flutterchat-dev-143703-authRole",
+      "AuthRoleName": "amplify-flutterchat-dev-191742-authRole",
+      "UnauthRoleArn": "arn:aws:iam::830308227356:role/amplify-flutterchat-dev-191742-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::830308227356:role/amplify-flutterchat-dev-191742-authRole",
       "Region": "ap-northeast-2",
-      "DeploymentBucketName": "amplify-flutterchat-dev-143703-deployment",
-      "UnauthRoleName": "amplify-flutterchat-dev-143703-unauthRole",
-      "StackName": "amplify-flutterchat-dev-143703",
-      "StackId": "arn:aws:cloudformation:ap-northeast-2:830308227356:stack/amplify-flutterchat-dev-143703/f2d6d620-1319-11ee-a221-02919bf61ce6",
-      "AmplifyAppId": "d1ushy77yt7t3p"
+      "DeploymentBucketName": "amplify-flutterchat-dev-191742-deployment",
+      "UnauthRoleName": "amplify-flutterchat-dev-191742-unauthRole",
+      "StackName": "amplify-flutterchat-dev-191742",
+      "StackId": "arn:aws:cloudformation:ap-northeast-2:830308227356:stack/amplify-flutterchat-dev-191742/27ffc6a0-1341-11ee-a39c-064b9d28942a",
+      "AmplifyAppId": "da4cendf3y6ny"
     },
     "categories": {
       "auth": {
-        "flutterchat9567efaa": {}
+        "flutterchatf66a27ff": {}
       },
       "api": {
         "flutterchat": {}
