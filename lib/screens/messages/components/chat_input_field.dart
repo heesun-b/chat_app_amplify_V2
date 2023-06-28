@@ -1,3 +1,4 @@
+import 'package:chat/screens/messages/components/message_text_field.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
@@ -11,7 +12,7 @@ class ChatInputField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(
-        horizontal: defaultPadding,
+        // horizontal: defaultPadding,
         vertical: defaultPadding / 2,
       ),
       decoration: BoxDecoration(
@@ -27,7 +28,7 @@ class ChatInputField extends StatelessWidget {
       child: SafeArea(
         child: Row(
           children: [
-            const Icon(Icons.mic, color: kPrimaryColor),
+            // const Icon(Icons.mic, color: kPrimaryColor),
             const SizedBox(width: defaultPadding),
             Expanded(
               child: Container(
@@ -50,30 +51,25 @@ class ChatInputField extends StatelessWidget {
                     ),
                     const SizedBox(width: defaultPadding / 4),
                     const Expanded(
-                      child: TextField(
-                        decoration: InputDecoration(
-                          hintText: "Type message",
-                          border: InputBorder.none,
-                        ),
-                      ),
+                      child: MessageTextField(),
                     ),
-                    Icon(
-                      Icons.attach_file,
-                      color: Theme.of(context)
-                          .textTheme
-                          .bodyLarge!
-                          .color!
-                          .withOpacity(0.64),
-                    ),
-                    const SizedBox(width: defaultPadding / 4),
-                    Icon(
-                      Icons.camera_alt_outlined,
-                      color: Theme.of(context)
-                          .textTheme
-                          .bodyLarge!
-                          .color!
-                          .withOpacity(0.64),
-                    ),
+                    // Icon(
+                    //   Icons.attach_file,
+                    //   color: Theme.of(context)
+                    //       .textTheme
+                    //       .bodyLarge!
+                    //       .color!
+                    //       .withOpacity(0.64),
+                    // ),
+                    // const SizedBox(width: defaultPadding / 4),
+                    // Icon(
+                    //   Icons.camera_alt_outlined,
+                    //   color: Theme.of(context)
+                    //       .textTheme
+                    //       .bodyLarge!
+                    //       .color!
+                    //       .withOpacity(0.64),
+                    // ),
                   ],
                 ),
               ),
@@ -84,3 +80,4 @@ class ChatInputField extends StatelessWidget {
     );
   }
 }
+
