@@ -752,6 +752,106 @@ type Todo @model @auth(rules: [
 // owner는 모든 기능 가능
 ```
 
-☑️ 권한 부여 전략
+☑️ **권한 부여 규칙 구성**
+
+- 권한 부여 전략 (`allow`)
+    - 권한 부여 규칙이 적용되는 대상
+- 권한 부여 공급자 (`provider`)
+    - 권한 부여 규칙을 적용하는 데 사용되는 메커니즘(API 키, IAM, Amazon Cognito 사용자 풀, OIDC)
+- 인증된 작업 ( `operations`)
+    - 주어진 전략 및 공급자에 대해 허용되는 작업. 지정하지 않으면  `create`, `read`및 `update`작업 `delete`이 허용
+    
+
+☑️ **권한 부여 전략**
 
 ![Untitled](Amplify%20CLI%20e01650b0709e4be5b71f7d256e496014/Untitled%208.png)
+
+1. **로그인한 사용자 데이터 엑세스**
+
+```dart
+type Todo @model @auth(rules: [{ allow: private }]) {
+  content: String
+}
+```
+
+- 하위 모델이 있는 경우 사용 예시
+
+```dart
+type Todo @model @auth(rules: [{ allow: owner }]) {
+  id: ID!
+  name: String!
+  task: [Task] @hasMany
+}
+
+type Task @model @auth(rules: [{ allow: owner }, { allow: private, operations: [read] }]) {
+  id: ID!
+  description: String!
+}
+```
+
+1. **다중 사용자 데이터 엑세스**
+
+```dart
+type Todo @model @auth(rules: [{ allow: owner, ownerField: "authors" }]) {
+  content: String
+  authors: [String]
+}
+```
+
+1. 사용자 그룹 기반 데이터 엑세스
+- `group` 권한 부여
+- 정적 그룹 권한 부여
+
+```dart
+type Salary @model @auth(rules: [{ allow: groups, groups: ["Admin"] }]) {
+  id: ID!
+  wage: Int
+  currency: String
+}
+```
+
+- 동적 그룹 권한 부여
+
+```dart
+# Dynamic group authorization with multiple groups
+type Post @model @auth(rules: [{ allow: groups, groupsField: "groups" }]) {
+  id: ID!
+  title: String
+  groups: [String]
+}
+
+# Dynamic group authorization with a single group
+type Post @model @auth(rules: [{ allow: groups, groupsField: "group" }]) {
+  id: ID!
+  title: String
+  group: String
+}
+```
+
+### ✅ Multiple Authentication Rules
+
+```dart
+type Post @model @auth(rules: [
+  { allow: public, operations: [read], provider: iam },
+  { allow: owner }]) {
+  title: String
+  content: String
+}
+```
+
+- `OR` 결합
+
+### ✅ Field-level Authentication Rules
+
+```dart
+`type Employee @model @auth(rules: [
+  { allow: private, operations: [read] },
+  { allow: owner }
+]) {
+  name: String
+  email: String
+  ssn: String @auth(rules: [{ allow: owner }])
+}
+```
+
+- 필드에 권한 부여 규칙이 적용되면 해당 필드는 모델 수준 권한 부여 규칙을 무시한다.
